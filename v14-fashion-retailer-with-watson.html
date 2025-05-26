@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fashion Retailer</title>
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    header nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('https://img.freepik.com/free-vector/hand-drawn-sale-day-pattern-background_23-2150812280.jpg?ga=GA1.1.1529767100.1748244608&semt=ais_hybrid&w=740') no-repeat center center;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 5px #000;
+      font-size: 2rem;
+      flex-direction: column;
+    }
+    .promo {
+      text-align: center;
+      background: #f8f8f8;
+      padding: 10px;
+      font-weight: bold;
+    }
+    .collections {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+    .collections img {
+      width: 30%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .section-title {
+      text-align: center;
+      margin: 40px 0 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product {
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .product h4 {
+      margin: 10px 0 5px;
+    }
+    .product p {
+      color: #666;
+    }
+  
+.announcement-bar {
+  background-color: #fff3cd;
+  color: #856404;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 0;
+  position: relative;
+}
+
+.scroll-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+.color-options {
+  margin: 10px 0;
+}
+.color-dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+footer {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid #ddd;
+}
+footer h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+footer ul li {
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+footer ul li:hover {
+  text-decoration: underline;
+}
+footer form {
+  display: flex;
+  margin-bottom: 10px;
+}
+footer input[type="email"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+footer button[type="submit"] {
+  background-color: #3c2f2f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+}
+footer button[type="submit"]:hover {
+  background-color: #2a1f1f;
+}
+footer p {
+  margin: 6px 0;
+}
+</style>
+</head>
+<body>
+<div class="announcement-bar">
+<div class="scroll-text">
+    🎉 Get 20% off your first order with no min spend | Use Code: HELLOSG10 🎉
+  </div>
+</div>
+<div id="cart-items" style="position: fixed; top: 60px; right: 20px; width: 250px; max-height: 400px; overflow-y: auto; background: #fff; border: 1px solid #ccc; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); display: none; z-index: 9999; border-radius: 8px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+<strong style="font-size: 16px;">
+<img alt="cart" src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740" style="width: 18px; vertical-align: middle; margin-right: 5px;"/>
+<span id="cart-title">Shopping Cart (0 items)</span>
+</strong>
+<button onclick="document.getElementById('cart-items').style.display='none';" style="background: transparent; border: none; font-size: 18px; cursor: pointer;">✕</button>
+</div>
+<div style="text-align: center; padding: 20px; font-style: italic; color: #777;">Cart is empty</div>
+</div>
+<header>
+<div>
+<div style="font-size: 16px; font-weight: bold; color: #3c2f2f; letter-spacing: 1px;">
+            Ask <span style="color: #b58900;">Retail</span>
+</div>
+</div>
+<nav>
+<a href="#">Shop</a>
+<a href="#">Lookbook</a>
+<a href="#">Blog</a>
+<a href="#">About</a>
+</nav>
+<div class="login-container" style="display: flex; align-items: center; gap: 8px;">
+<img alt="User Icon" src="https://img.freepik.com/free-photo/user-profile-interface-sign-symbol-icon-3d-rendering_56104-1956.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740" style="height: 30px; border-radius: 50%;"/>
+<span style="font-size: 14px; font-weight: bold;">Welcome Back, Yuko!</span>
+</div>
+<div class="cart-container" style="display: flex; align-items: center; gap: 8px;"><img alt="Cart" id="cart-icon" src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740" style="height: 30px;"/><span id="cart-count" style="background: red; color: white; border-radius: 50%; padding: 2px 8px; font-size: 14px;">0</span></div></header>
+<section class="hero">
+<div>Details</div>
+<div><strong>New Arrivals</strong></div>
+<div><a href="#" style="color: #fff; text-decoration: underline;">View More</a></div>
+</section>
+<div class="promo">FREE SHIPPING ON ORDERS OVER $100 • Some conditions may apply</div>
+<section class="collections">
+<img alt="Summer Collection" src="https://img.freepik.com/premium-photo/beautiful-girl-with-flowers-dress-glasses-sneakers_262708-62336.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+<img alt="Explore Collections" src="https://img.freepik.com/free-photo/happy-teenage-girl-white-dress-dancing-alone-her-birthday-party_8353-8362.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+<img alt="Picnic Prep" src="https://img.freepik.com/free-photo/fashion-portrait-young-elegant-woman_1328-2710.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+</section>
+<div class="section-title">Shop This Week's Favorites<br/>Majulah Deals: Celebrate Singapore in Style!</div>
+<section class="products">
+<div class="product">
+<img alt="The Marina Midi" src="https://img.freepik.com/free-photo/portrait-young-beautiful-smiling-girl-trendy-summer-light-pink-dress-sexy-carefree-woman-posing-positive-model-having-fun_158538-5149.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>The Marina Midi</h4>
+<p>$79.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Celeste Shift " src="https://img.freepik.com/free-photo/portrait-young-beautiful-smiling-woman-trendy-summer-sundress_158538-17904.jpg?ga=GA1.1.1529767100.1748244608&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Celeste Shift </h4>
+<p>$39.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Sunset Bloom
+" src="https://img.freepik.com/free-photo/young-beautiful-woman-speaking-phone-trendy-girl-casual-summer-overalls-clothes-hat_158538-1301.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Sunset Bloom</h4>
+<p>$69.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Olive Breeze Maxi" src="https://img.freepik.com/free-photo/portrait-young-beautiful-smiling-female-trendy-summer-dress-sexy-carefree-woman-posing-near-pink-wall-studio-positive-model-having-fun-indoors-cheerful-happy_158538-20393.jpg?ga=GA1.1.1529767100.1748244608&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Olive Breeze Maxi</h4>
+<p>$49.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Aurora Pleated" src="https://img.freepik.com/free-photo/young-beautiful-smiling-woman-looking-trendy-girl-casual-summer-overalls-clothes-hat_158538-1525.jpg?ga=GA1.1.1529767100.1748244608&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Aurora Pleated</h4>
+<p>$48.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Olive Breeze Maxi" src="https://img.freepik.com/free-photo/young-beautiful-smiling-hipster-woman-trendy-summer-dress-sexy-carefree-woman-posing-street-background-sunset-positive-model-outdoors-cheerful-happy-with-handbag_158538-26059.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Olive Breeze Maxi</h4>
+<p>$29.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Luna Lace" src="https://img.freepik.com/free-photo/portrait-beautiful-cute-brunette-woman-model-casual-summer-flying-dress-with-no-makeup-isolated-white_158538-14442.jpg?ga=GA1.1.1529767100.1748244608&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Luna Lace</h4>
+<p>$89.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+<div class="product">
+<img alt="Ivory Meadow " src="https://img.freepik.com/free-photo/phone-walking-pleasant-park-smile-glam_1303-3200.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740"/>
+<div class="color-options">
+<span class="color-dot" style="background-color: #000000;" title="Black"></span>
+<span class="color-dot" style="background-color: #aaa58d;" title="Beige"></span>
+<span class="color-dot" style="background-color: #f6f0e6;" title="Ivory"></span>
+<span class="color-dot" style="background-color: #c0cae2;" title="Blue"></span>
+</div>
+<h4>Ivory Meadow</h4>
+<p>$39.90</p>
+<button style="margin-top: 10px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Add to Cart</button></div>
+</section>
+<iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/AdRXKOvO4ls?autoplay=1&amp;mute=1" style="display: block; margin: 40px auto;" title="Valder Fields - YouTube player" width="560">
+</iframe>
+<script>
+let cartCount = 0;
+let cartItems = [];
+
+document.querySelectorAll('.product').forEach(product => {
+    let button = product.querySelector('button');
+    let title = product.querySelector('h4').textContent;
+    let price = product.querySelector('p').textContent;
+    let imgSrc = product.querySelector('img').src;
+
+    button.addEventListener('click', () => {
+        cartCount++;
+        document.getElementById('cart-count').textContent = cartCount;
+        cartItems.push({title, price, imgSrc});
+        updateCartDisplay();
+    });
+});
+
+function updateCartDisplay() {
+    const cartBox = document.getElementById('cart-items');
+    cartBox.innerHTML = '';
+    if (cartItems.length === 0) {
+        cartBox.textContent = 'Cart is empty';
+        return;
+    }
+    cartItems.forEach((item, index) => {
+        let div = document.createElement('div');
+        div.style.marginBottom = '10px';
+        div.style.display = 'flex';
+        div.style.alignItems = 'center';
+        div.innerHTML = `
+            <img src="${item.imgSrc}" alt="${item.title}" style="width: 50px; height: auto; margin-right: 10px; border-radius: 5px;">
+            <div>
+                <strong>${item.title}</strong><br>
+                <span>${item.price}</span>
+            </div>
+        `;
+        
+        let removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.style = 'margin-left: auto; background: red; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer;';
+        removeBtn.onclick = () => removeCartItem(index);
+        div.appendChild(removeBtn);
+        cartBox.appendChild(div);
+    
+    });
+}
+
+// Toggle cart visibility on icon click
+document.getElementById('cart-icon').addEventListener('click', () => {
+    const cartBox = document.getElementById('cart-items');
+    cartBox.style.display = cartBox.style.display === 'none' ? 'block' : 'none';
+});
+
+function removeCartItem(index) {
+    cartItems.splice(index, 1);
+    cartCount = cartItems.length;
+    document.getElementById('cart-count').textContent = cartCount;
+    updateCartDisplay();
+}
+
+function updateCartTitle() {
+    const count = cartItems.length;
+    const titleSpan = document.getElementById('cart-title');
+    if (titleSpan) {
+        titleSpan.textContent = `Shopping Cart (${count} item${count !== 1 ? 's' : ''})`;
+    }
+}
+function updateCartDisplay() {
+    const cartBox = document.getElementById('cart-items');
+    cartBox.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <strong style="font-size: 16px;">
+          <img src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?ga=GA1.1.1529767100.1748244608&semt=ais_hybrid&w=740" alt="cart" style="width: 18px; vertical-align: middle; margin-right: 5px;"/>
+          <span id="cart-title">Shopping Cart (${cartItems.length} item${cartItems.length !== 1 ? 's' : ''})</span>
+        </strong>
+        <button onclick="document.getElementById('cart-items').style.display='none';" style="background: transparent; border: none; font-size: 18px; cursor: pointer;">✕</button>
+      </div>
+    `;
+
+    if (cartItems.length === 0) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.style.textAlign = 'center';
+        emptyDiv.style.padding = '20px';
+        emptyDiv.style.fontStyle = 'italic';
+        emptyDiv.style.color = '#777';
+        emptyDiv.textContent = 'Cart is empty';
+        cartBox.appendChild(emptyDiv);
+        return;
+    }
+
+    cartItems.forEach((item, index) => {
+        let div = document.createElement('div');
+        div.style.marginBottom = '10px';
+        div.style.display = 'flex';
+        div.style.alignItems = 'center';
+        div.innerHTML = `
+            <img src="${item.imgSrc}" alt="${item.title}" style="width: 50px; height: auto; margin-right: 10px; border-radius: 5px;">
+            <div>
+                <strong>${item.title}</strong><br>
+                <span>${item.price}</span>
+            </div>
+        `;
+
+        let removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.style = 'margin-left: auto; background: red; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer;';
+        removeBtn.onclick = () => removeCartItem(index);
+        div.appendChild(removeBtn);
+        cartBox.appendChild(div);
+    });
+
+    updateCartTitle();
+}
+</script>
+<footer style="background-color: #f8f8f8; padding: 40px 20px; font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: auto;">
+<div>
+<h4>About Us</h4>
+<ul style="list-style: none; padding: 0;">
+<li>Our Story</li>
+<li>Stores</li>
+<li>Promotions</li>
+<li>LBCommunity</li>
+<li>As Seen On</li>
+<li>Our Careers</li>
+</ul>
+</div>
+<div>
+<h4>Top Products</h4>
+<ul style="list-style: none; padding: 0;">
+<li>Tops</li>
+<li>Dresses</li>
+<li>Pants</li>
+<li>Shorts &amp; Skorts</li>
+<li>Jumpsuits</li>
+<li>Skirts</li>
+</ul>
+</div>
+<div>
+<h4>Top Collections</h4>
+<ul style="list-style: none; padding: 0;">
+<li>Signatures</li>
+<li>Bestsellers</li>
+<li>Work</li>
+<li>Party &amp; Occasions</li>
+</ul>
+</div>
+<div>
+<h4>Need Help?</h4>
+<ul style="list-style: none; padding: 0;">
+<li>My Account</li>
+<li>FAQ</li>
+<li>Size Guide</li>
+<li>Order &amp; Delivery</li>
+<li>Returns</li>
+<li>Payment Modes</li>
+<li>Contact Us</li>
+</ul>
+</div>
+<div style="flex: 1; min-width: 200px;">
+<h4>Sign up for our newsletter</h4>
+<form style="display: flex; margin-bottom: 10px;">
+<input placeholder="Enter your email" style="flex: 1; padding: 8px; border: 1px solid #ccc; border-right: none;" type="email"/>
+<button style="background-color: #3c2f2f; color: white; border: none; padding: 8px 16px;" type="submit">Subscribe</button>
+</form>
+<p>Get the inside scoop of our new launches and experiences!</p>
+<h4>We Accept</h4>
+<p style="font-size: 20px;">💳 🛍️ 📱</p>
+<p>I am shipping to 🇸🇬 <strong>Singapore</strong></p>
+</div>
+</div>
+</footer>
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "42ae4d20-8fc1-4fe3-b438-246eeb6cc68c",
+    region: "jp-tok",
+    serviceInstanceID: "3f24ae77-c4e2-4e48-bad7-e388010fcf6b",
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+      (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script></body>
+</html>
