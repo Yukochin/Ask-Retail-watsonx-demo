@@ -178,6 +178,46 @@ footer p {
     🎉 Enjoy 20% off your order with no minimum spend in celebration of Singapore’s birthday! | Use code: MajulahSG60 🎉
   </div>
 </div>
+<div id="history-panel" style="position: fixed; top: 60px; right: 20px; width: 300px; max-height: 400px; overflow-y: auto; background: #fff; border: 1px solid #ccc; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); display: none; z-index: 9999; border-radius: 8px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+<strong style="font-size: 16px;">
+<img alt="history" src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" style="width: 18px; vertical-align: middle; margin-right: 5px;"/>
+      Order History
+    </strong>
+<button onclick="toggleHistory()" style="background: transparent; border: none; font-size: 18px; cursor: pointer;">✕</button>
+</div>
+
+<div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+<img alt="Petal Reverie" src="https://img.freepik.com/free-photo/lady-cotton-midi-dress-sneakers-keeps-her-wide-brimmed-straw-hat-brunette-woman-posing-with-shopping-bag-orange-background_197531-17664.jpg?ga=GA1.1.1001712290.1748324807&amp;semt=ais_items_boosted&amp;w=740" style="width: 50px; height: auto; border-radius: 5px;"/>
+<div>
+<strong>Order No. SG458320</strong><br/>
+<small>🛒 Petal Reverie - $38.80 (Size M)<br/>📦 Delivered on 10 May</small>
+</div>
+</div>
+<div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+<img alt="Floral Symphony" src="https://img.freepik.com/free-photo/cheerful-pretty-girl-dress-standing-yellow-wall_273609-48859.jpg" style="width: 50px; height: auto; border-radius: 5px;"/>
+<div>
+<strong>Order No. SG458538</strong><br/>
+<small>🛒 Floral Symphony - $48.00 (Size M)<br/>📦 Delivered on 7 June</small>
+</div>
+</div>
+<div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+<img alt="Yellow Meringue" src="https://img.freepik.com/free-photo/young-woman-beautiful-red-dress_1303-17505.jpg" style="width: 50px; height: auto; border-radius: 5px;"/>
+<div>
+<strong>Last Order: <br/>Order No. SG458920</strong><br/>
+<small>🛒 Yellow Meringue - $45.80 (Size M)<br/>🚫 Shipment on Hold</small>
+</div>
+</div>
+<div style="text-align: center; font-style: italic; color: #999;">End of history</div><div>
+
+
+
+
+
+
+
+</div>
+</div>
 <div id="cart-items" style="position: fixed; top: 60px; right: 20px; width: 250px; max-height: 400px; overflow-y: auto; background: #fff; border: 1px solid #ccc; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); display: none; z-index: 9999; border-radius: 8px;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
 <strong style="font-size: 16px;">
@@ -205,7 +245,10 @@ footer p {
 <span style="font-size: 14px; font-weight: bold;"><span id="greeting-text">Welcome to Ask Retail</span></span>
 <button onclick="logout()" style="margin-left: 10px; padding: 6px 12px; background-color: #b58900; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Logout</button>
 </div>
-<div class="cart-container" style="display: flex; align-items: center; gap: 8px;"><img alt="Cart" id="cart-icon" src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740" style="height: 30px;"/><span id="cart-count" style="background: red; color: white; border-radius: 50%; padding: 2px 8px; font-size: 14px;">0</span></div></header>
+<div class="cart-container" style="display: flex; align-items: center; gap: 8px;">
+<!-- History Icon -->
+<img alt="History" id="history-icon" onclick="toggleHistory()" src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" style="height: 30px; cursor: pointer;"/>
+<img alt="Cart" id="cart-icon" src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?ga=GA1.1.1529767100.1748244608&amp;semt=ais_hybrid&amp;w=740" style="height: 30px;"/><span id="cart-count" style="background: red; color: white; border-radius: 50%; padding: 2px 8px; font-size: 14px;">0</span></div></header>
 <section class="hero">
 <div>Details</div>
 <div><strong>New Arrivals</strong></div>
@@ -862,6 +905,22 @@ function checkoutCart() {
     localStorage.removeItem('cart');
     location.reload();
 }
+</script>
+<script>
+  document.getElementById("history-icon").addEventListener("click", toggleHistory);
+
+  function toggleHistory() {
+    const historyPanel = document.getElementById("history-panel");
+    const isVisible = historyPanel.style.display === "block";
+    historyPanel.style.display = isVisible ? "none" : "block";
+  }
+</script>
+<script>
+  document.getElementById("history-icon").addEventListener("click", function() {
+    const historyPanel = document.getElementById("history-panel");
+    const isVisible = historyPanel.style.display === "block";
+    historyPanel.style.display = isVisible ? "none" : "block";
+  });
 </script>
 </body>
 </html>
